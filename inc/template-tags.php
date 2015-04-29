@@ -81,7 +81,11 @@ function kirumo_comment( $comment, $args, $depth ) {
 			<footer class="comment-meta">
 				<div class="comment-author vcard">
 					<?php if ( 0 != $args['avatar_size'] ) { echo get_avatar( $comment, $args['avatar_size'] ); } ?>
+					<?php if ('webmention' == $comment->comment_type || 'pingback' == $comment->comment_type) : ?>
+						<?php comment_text(); ?>
+					<?php else : ?>
 					<?php printf( __( '%s <span class="says">says:</span>', 'kirumo' ), sprintf( '<cite class="fn">%s</cite>', get_comment_author_link() ) ); ?>
+					<?php endif; ?>
 				</div><!-- .comment-author -->
 
 				<?php if ( '0' == $comment->comment_approved ) : ?>
@@ -89,9 +93,11 @@ function kirumo_comment( $comment, $args, $depth ) {
 				<?php endif; ?>
 			</footer><!-- .comment-meta -->
 
+			<?php if ('webmention' != $comment->comment_type && 'pingback' != $comment->comment_type) : ?>
 			<div class="comment-content">
 				<?php comment_text(); ?>
 			</div><!-- .comment-content -->
+			<?php endif; ?>
 
 			<?php
 				comment_reply_link( array_merge( $args, array(
