@@ -5,6 +5,7 @@
 
 //get post format for genericon class
 $format = get_post_format() ? get_post_format() : 'standard' ;
+$footer = in_array($format, array("link", "quote", "aside")) ? "footer-short" : "footer";
 
 ?>
 
@@ -20,6 +21,7 @@ $format = get_post_format() ? get_post_format() : 'standard' ;
 		<h1 class="entry-title"><a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a></h1>
 		<?php endif; ?>	
 	<?php endif; ?>
+	<?php get_template_part( 'content', $footer ); ?>
 	</header><!-- .entry-header -->
 	<?php if ( $format != "audio" && has_post_thumbnail() ) { 
 		the_post_thumbnail( 'large' );
@@ -41,6 +43,4 @@ $format = get_post_format() ? get_post_format() : 'standard' ;
 		?>
 	</div><!-- .entry-content -->
 	<?php endif; ?>
-
-	<?php get_template_part( 'content', 'footer' ); ?>
 </article><!-- #post-## -->
