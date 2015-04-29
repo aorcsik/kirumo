@@ -168,6 +168,11 @@ require get_template_directory() . '/inc/customizer/custom-header-footer-color.p
  */
 require get_template_directory() . '/inc/custom-walkers.php';
 
+/*
+ * Recent Comments Widget
+ */
+require get_template_directory() . '/inc/recentcomments-widget.php';
+
 /**
  * Add support for Vertical Featured Images
  */
