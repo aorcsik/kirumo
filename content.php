@@ -9,6 +9,9 @@ $format = get_post_format() ? get_post_format() : 'standard' ;
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+	<?php if ( $format == "audio" && has_post_thumbnail() ) {
+		the_post_thumbnail( 'large' );
+	} ?>
 	<header class="entry-header">
 	<?php if ($format != "status" && $format != "aside") : ?>
 		<?php if (is_single()) : ?>
@@ -18,7 +21,7 @@ $format = get_post_format() ? get_post_format() : 'standard' ;
 		<?php endif; ?>	
 	<?php endif; ?>
 	</header><!-- .entry-header -->
-	<?php if ( has_post_thumbnail() ) {
+	<?php if ( $format != "audio" && has_post_thumbnail() ) { 
 		the_post_thumbnail( 'large' );
 	} ?>
 
