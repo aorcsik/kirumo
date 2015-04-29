@@ -74,14 +74,7 @@ if ( ! function_exists( 'kirumo_comment' ) ) :
 function kirumo_comment( $comment, $args, $depth ) {
 	$GLOBALS['comment'] = $comment;
 
-	if ( 'pingback' == $comment->comment_type || 'trackback' == $comment->comment_type ) : ?>
-
-	<li id="comment-<?php comment_ID(); ?>" <?php comment_class(); ?>>
-		<div class="comment-body">
-			<?php _e( 'Pingback:', 'kirumo' ); ?> <?php comment_author_link(); ?> <?php edit_comment_link( __( 'Edit', 'kirumo' ), '<span class="edit-link">', '</span>' ); ?>
-		</div>
-
-	<?php else : ?>
+	?>
 
 	<li id="comment-<?php comment_ID(); ?>" <?php comment_class( empty( $args['has_children'] ) ? '' : 'parent' ); ?>>
 		<article id="div-comment-<?php comment_ID(); ?>" class="comment-body">
@@ -120,7 +113,6 @@ function kirumo_comment( $comment, $args, $depth ) {
 		</article><!-- .comment-body -->
 
 	<?php
-	endif;
 }
 endif; // ends check for kirumo_comment()
 
