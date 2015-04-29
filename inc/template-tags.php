@@ -93,6 +93,15 @@ function kirumo_comment( $comment, $args, $depth ) {
 				<?php endif; ?>
 			</footer><!-- .comment-meta -->
 
+			<div class="comment-metadata">
+				<a href="<?php echo esc_url( get_comment_link( $comment->comment_ID ) ); ?>">
+					<time datetime="<?php comment_time( 'c' ); ?>">
+						<?php printf( _x( '%1$s at %2$s', '1: date, 2: time', 'kirumo' ), get_comment_date(), get_comment_time() ); ?>
+					</time>
+				</a>
+				<?php edit_comment_link( __( 'Edit', 'kirumo' ), '<span class="edit-link">', '</span>' ); ?>
+			</div><!-- .comment-metadata -->
+
 			<?php if ('webmention' != $comment->comment_type && 'pingback' != $comment->comment_type) : ?>
 			<div class="comment-content">
 				<?php comment_text(); ?>
@@ -108,14 +117,6 @@ function kirumo_comment( $comment, $args, $depth ) {
 					'after'     => '</div>',
 				) ) );
 			?>
-			<div class="comment-metadata">
-				<a href="<?php echo esc_url( get_comment_link( $comment->comment_ID ) ); ?>">
-					<time datetime="<?php comment_time( 'c' ); ?>">
-						<?php printf( _x( '%1$s at %2$s', '1: date, 2: time', 'kirumo' ), get_comment_date(), get_comment_time() ); ?>
-					</time>
-				</a>
-				<?php edit_comment_link( __( 'Edit', 'kirumo' ), '<span class="edit-link">', '</span>' ); ?>
-			</div><!-- .comment-metadata -->
 		</article><!-- .comment-body -->
 
 	<?php
